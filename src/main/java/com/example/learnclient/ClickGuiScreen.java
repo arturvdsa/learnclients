@@ -83,7 +83,10 @@ public class ClickGuiScreen extends Screen {
         boolean left = GLFW.glfwGetMouseButton(win, GLFW.GLFW_MOUSE_BUTTON_LEFT) == GLFW.GLFW_PRESS;
         boolean right = GLFW.glfwGetMouseButton(win, GLFW.GLFW_MOUSE_BUTTON_RIGHT) == GLFW.GLFW_PRESS;
         boolean shift = GLFW.glfwGetKey(win, GLFW.GLFW_KEY_RIGHT_SHIFT) == GLFW.GLFW_PRESS;
-        if (shift && !prevShift) { close(); return; }
+        
+        // ИСПРАВЛЕНО ЗДЕСЬ: close() заменен на client.setScreen(null)
+        if (shift && !prevShift) { client().setScreen(null); return; }
+        
         prevShift = shift;
         handleTyping(win);
 
@@ -157,4 +160,4 @@ public class ClickGuiScreen extends Screen {
     private static boolean inside(int mx, int my, int x, int y, int w, int h) {
         return mx >= x && mx < x + w && my >= y && my < y + h;
     }
-            }
+}

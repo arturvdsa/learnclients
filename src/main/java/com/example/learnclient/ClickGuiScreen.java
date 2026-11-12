@@ -46,7 +46,6 @@ public class ClickGuiScreen extends Screen {
 
     private static net.minecraft.client.MinecraftClient client() { return net.minecraft.client.MinecraftClient.getInstance(); }
 
-    @Override
     protected void init() {
         if (laidOut) return;
         laidOut = true;
@@ -61,7 +60,6 @@ public class ClickGuiScreen extends Screen {
         }
     }
 
-    @Override
     public boolean shouldPause() { return false; }
 
     private boolean prevBackspace;
@@ -80,7 +78,6 @@ public class ClickGuiScreen extends Screen {
         prevBackspace = bs;
     }
 
-    @Override
     public void render(DrawContext ctx, int mx, int my, float delta) {
         long win = client().getWindow().getHandle();
         boolean left = GLFW.glfwGetMouseButton(win, GLFW.GLFW_MOUSE_BUTTON_LEFT) == GLFW.GLFW_PRESS;
@@ -160,4 +157,4 @@ public class ClickGuiScreen extends Screen {
     private static boolean inside(int mx, int my, int x, int y, int w, int h) {
         return mx >= x && mx < x + w && my >= y && my < y + h;
     }
-}
+            }
